@@ -8,6 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
+import { UsersService } from './services/user.service';
 
 @Controller('user')
 export class UserController {
@@ -35,6 +36,6 @@ export class UserController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+    return this.usersService.delete(+id);
   }
 }
