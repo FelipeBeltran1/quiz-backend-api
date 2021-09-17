@@ -4,6 +4,10 @@ import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
 export class CreateQuizDto {
   @IsString()
   @IsNotEmpty()
+  readonly name: string;
+
+  @IsString()
+  @IsNotEmpty()
   readonly category: string;
 
   @IsString()

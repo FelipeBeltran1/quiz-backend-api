@@ -4,8 +4,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
-import { QuizController } from './modules/quiz/quiz.controller';
-import { QuizModule } from './modules/quiz/quiz.module';
 import { QuizModule } from './modules/quiz/quiz.module';
 import typeormConfig from './@common/config/typeorm.config';
 @Module({
@@ -21,10 +19,16 @@ import typeormConfig from './@common/config/typeorm.config';
         configService.get('typeorm.users'),
       name: 'users',
     }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) =>
+        configService.get('typeorm.quizzes'),
+      name: 'quizzes',
+    }),
     UserModule,
     QuizModule,
   ],
-  controllers: [AppController, QuizController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

@@ -26,5 +26,8 @@ export default registerAs('typeorm', () => {
     users: {
       ...configDefault,
     },
+    quizzes: {
+      ...configDefault,
+    },
   };
 });

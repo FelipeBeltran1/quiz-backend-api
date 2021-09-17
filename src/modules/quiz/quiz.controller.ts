@@ -24,6 +24,11 @@ export class QuizController {
     return this.quizzesService.findAll();
   }
 
+  @Post(':nameQuiz')
+  createQuiz(@Param('nameQuiz') nameQuiz: string) {
+    return this.quizzesService.createQuiz(nameQuiz);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.quizzesService.findOne(+id);

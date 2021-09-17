@@ -1,10 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('user', { schema: 'users' })
-@Unique(['email'])
+@Entity('quiz', { schema: 'quizzes' })
 export class Quiz {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  name: string;
 
   @Column()
   category: string;

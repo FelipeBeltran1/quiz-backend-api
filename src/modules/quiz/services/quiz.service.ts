@@ -29,6 +29,15 @@ export class QuizzesService {
     return await this.quizRepository.save(newQuiz);
   }
 
+  async createQuiz(nameQuiz: string) {
+    const response = await fetch(
+      'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
+    );
+    const data = await response.json();
+    console.log(data);
+    return await this.quizRepository.save(data);
+  }
+
   async update(id: number, payload: UpdateQuizDto) {
     let quiz = await this.findOne(id);
     quiz = {
