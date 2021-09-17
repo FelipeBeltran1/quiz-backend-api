@@ -31,6 +31,8 @@
     "@nestjs/platform-express": "^7.6.15",
     "@nestjs/typeorm": "^7.1.5",
     "class-validator": "^0.13.1",
+    "cross-fetch": "^3.1.4",
+    "node-fetch": "^3.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.7",

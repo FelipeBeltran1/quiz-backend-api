@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Quiz } from 'src/entities/quiz.entity';
 import { CreateQuizDto, UpdateQuizDto } from '../dto/quiz.dto';
 import { Repository } from 'typeorm';
+import fetch from 'cross-fetch';
 
 @Injectable()
 export class QuizzesService {
@@ -30,12 +31,16 @@ export class QuizzesService {
   }
 
   async createQuiz(nameQuiz: string) {
-    const response = await fetch(
-      'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
+    // const response = await fetch(
+    //   'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
+    // );
+    //const data = await response.json();
+    console.log(
+      await fetch(
+        'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
+      ),
     );
-    const data = await response.json();
-    console.log(data);
-    return await this.quizRepository.save(data);
+    //return await this.quizRepository.save(data);
   }
 
   async update(id: number, payload: UpdateQuizDto) {
