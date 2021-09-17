@@ -7,19 +7,4 @@ export class Quiz {
 
   @Column()
   name: string;
-
-  @Column()
-  category: string;
-
-  @Column()
-  type: string;
-
-  @Column()
-  difficulty: string;
-
-  @Column()
-  question: string;
-
-  @Column()
-  correct_answer: boolean;
 }
