@@ -1,5 +1,5 @@
 import { PartialType } from '@nestjs/mapped-types';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsArray, IsNotEmpty, IsString } from 'class-validator';
 import { Question } from 'src/entities/question.entity';
 
 export class CreateQuizDto {
@@ -8,6 +8,7 @@ export class CreateQuizDto {
   readonly name: string;
 
   @IsNotEmpty()
+  @IsArray()
   readonly questions: Question[];
 }
 export class UpdateQuizDto extends PartialType(CreateQuizDto) {}
