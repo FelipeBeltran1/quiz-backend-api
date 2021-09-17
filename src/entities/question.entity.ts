@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Quiz } from './quiz.entity';
 
 @Entity('question', { schema: 'questions' })
 export class Question {
@@ -22,4 +23,7 @@ export class Question {
 
   @Column()
   correct_answer: boolean;
+
+  @ManyToOne((type) => Quiz, (quiz) => quiz.questions)
+  quiz: Quiz;
 }
