@@ -13,7 +13,9 @@ export class QuizzesService {
   ) {}
 
   async findAll() {
-    return await this.quizRepository.find();
+    return await this.quizRepository.find({
+      relations: ['questions'],
+    });
   }
 
   async findOne(id: number) {
