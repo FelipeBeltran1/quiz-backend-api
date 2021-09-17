@@ -15,7 +15,7 @@ export class Question {
   @Column()
   difficulty: string;
 
-  @Column()
+  @Column({ length: 1000 })
   question: string;
 
   @Column()
