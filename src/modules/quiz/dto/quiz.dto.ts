@@ -19,7 +19,6 @@ export class CreateQuizDto {
   readonly question: string;
 
   @IsBoolean()
-  @IsNotEmpty()
-  readonly correct_answer: string;
+  readonly correct_answer: boolean;
 }
 export class UpdateQuizDto extends PartialType(CreateQuizDto) {}

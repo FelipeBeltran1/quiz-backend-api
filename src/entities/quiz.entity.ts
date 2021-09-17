@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @Entity('user', { schema: 'users' })
 @Unique(['email'])
-export class User {
+export class Quiz {
   @PrimaryGeneratedColumn()
   id: number;
 
