@@ -5,7 +5,7 @@ import { CreateQuizDto, UpdateQuizDto } from '../dto/quiz.dto';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class quizzesService {
+export class QuizzesService {
   constructor(
     @InjectRepository(Quiz, 'quizzes')
     private readonly quizRepository: Repository<Quiz>,

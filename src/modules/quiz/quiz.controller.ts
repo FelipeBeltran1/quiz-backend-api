@@ -30,8 +30,8 @@ export class QuizController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() UpdateQuizDto: UpdateQuizDto) {
-    return this.quizzesService.update(+id, UpdateQuizDto);
+  update(@Param('id') id: string, @Body() updateQuizDto: UpdateQuizDto) {
+    return this.quizzesService.update(+id, updateQuizDto);
   }
 
   @Delete(':id')
