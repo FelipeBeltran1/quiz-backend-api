@@ -27,10 +27,10 @@ export class QuestionController {
     return this.questionsService.findAll();
   }
 
-  @Post(':nameQuiz')
-  createQuiz(@Param('nameQuiz') nameQuiz: string) {
-    return this.questionsService.createQuiz(nameQuiz);
-  }
+  //   @Post(':nameQuiz')
+  //   createQuiz(@Param('nameQuiz') nameQuiz: string) {
+  //     return this.questionsService.createQuiz(nameQuiz);
+  //   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
