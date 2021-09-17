@@ -26,6 +26,12 @@ import typeormConfig from './@common/config/typeorm.config';
         configService.get('typeorm.quizzes'),
       name: 'quizzes',
     }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) =>
+        configService.get('typeorm.questions'),
+      name: 'questions',
+    }),
     UserModule,
     QuizModule,
     QuestionModule,

@@ -29,5 +29,8 @@ export default registerAs('typeorm', () => {
     quizzes: {
       ...configDefault,
     },
+    questions: {
+      ...configDefault,
+    },
   };
 });
