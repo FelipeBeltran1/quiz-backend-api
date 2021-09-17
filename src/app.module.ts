@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
 import { QuizModule } from './modules/quiz/quiz.module';
+import { QuestionModule } from './modules/question/question.module';
 import typeormConfig from './@common/config/typeorm.config';
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import typeormConfig from './@common/config/typeorm.config';
     }),
     UserModule,
     QuizModule,
+    QuestionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
