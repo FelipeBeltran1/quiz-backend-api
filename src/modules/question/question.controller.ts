@@ -38,8 +38,11 @@ export class QuestionController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateQuizDto: UpdateQuestionDto) {
-    return this.questionsService.update(+id, updateQuizDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateQuestionDto: UpdateQuestionDto,
+  ) {
+    return this.questionsService.update(+id, updateQuestionDto);
   }
 
   @Delete(':id')
