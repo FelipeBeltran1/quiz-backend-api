@@ -6,7 +6,6 @@ export class CreateQuizDto {
   @IsString()
   @IsNotEmpty()
   readonly name: string;
-
   @IsNotEmpty()
   @IsArray()
   readonly questions: Question[];

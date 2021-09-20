@@ -24,8 +24,11 @@ export class QuestionsService {
     }
   }
 
-  async create(payload: CreateQuestionDto) {
-    const newQuestion = await this.questionRepository.create(payload);
+  async create(id: number, payload: CreateQuestionDto) {
+    const newQuestion = await this.questionRepository.create({
+      quiz: { id },
+      ...payload,
+    });
     return await this.questionRepository.save(newQuestion);
   }
 

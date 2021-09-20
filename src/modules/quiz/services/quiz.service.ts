@@ -5,12 +5,14 @@ import { Quiz } from 'src/entities/quiz.entity';
 import { CreateQuizDto, UpdateQuizDto } from '../dto/quiz.dto';
 import { Repository } from 'typeorm';
 import fetch from 'cross-fetch';
+import { QuestionsService } from 'src/modules/question/services/question.service';
 
 @Injectable()
 export class QuizzesService {
   constructor(
     @InjectRepository(Quiz, 'quizzes')
     private readonly quizRepository: Repository<Quiz>,
+    private readonly questionService: QuestionsService,
   ) {}
 
   async findAll() {
@@ -33,18 +35,19 @@ export class QuizzesService {
     return await this.quizRepository.save(newQuiz);
   }
 
-  // async createQuiz(nameQuiz: string) {
-  //   // const response = await fetch(
-  //   //   'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
-  //   // );
-  //   //const data = await response.json();
-  //   console.log(
-  //     await fetch(
-  //       'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
-  //     ),
-  //   );
-  //   //return await this.quizRepository.save(data);
-  // }
+  async createQuiz(nameQuiz: string) {
+    // eslint-disable-next-line prettier/prettier
+    const response = await fetch('https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean');
+    const data = await response.json();
+    data.name = nameQuiz;
+    const quiz = await this.quizRepository.save(data);
+    for (let index = 0; index < data.results.length; index++) {
+      const element = data.results[index];
+      const question = await this.questionService.create(quiz.id, element);
+      console.log(element);
+    }
+    return await quiz;
+  }
 
   async update(id: number, payload: UpdateQuizDto) {
     let quiz = await this.findOne(id);

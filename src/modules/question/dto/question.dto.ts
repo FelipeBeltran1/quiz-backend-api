@@ -1,5 +1,5 @@
 import { PartialType } from '@nestjs/mapped-types';
-import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateQuestionDto {
   @IsString()
@@ -18,7 +18,12 @@ export class CreateQuestionDto {
   @IsNotEmpty()
   readonly question: string;
 
-  @IsBoolean()
-  readonly correct_answer: boolean;
+  @IsString()
+  @IsNotEmpty()
+  readonly correct_answer: string;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly incorrect_answer: string[];
 }
 export class UpdateQuestionDto extends PartialType(CreateQuestionDto) {}

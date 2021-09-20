@@ -20,7 +20,10 @@ export class Question {
   question: string;
 
   @Column()
-  correct_answer: boolean;
+  correct_answer: string;
+
+  @Column()
+  incorrect_answers: string;
 
   @ManyToOne((type) => Quiz, (quiz) => quiz.questions)
   quiz: Quiz;

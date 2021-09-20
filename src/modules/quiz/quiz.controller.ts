@@ -24,10 +24,10 @@ export class QuizController {
     return await this.quizzesService.findAll();
   }
 
-  // @Post(':nameQuiz')
-  // createQuiz(@Param('nameQuiz') nameQuiz: string) {
-  //   return this.quizzesService.createQuiz(nameQuiz);
-  // }
+  @Post(':nameQuiz')
+  async createQuiz(@Param('nameQuiz') nameQuiz: string) {
+    return await this.quizzesService.createQuiz(nameQuiz);
+  }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
