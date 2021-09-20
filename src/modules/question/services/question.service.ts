@@ -32,19 +32,6 @@ export class QuestionsService {
     return await this.questionRepository.save(newQuestion);
   }
 
-  //   async createQuiz(nameQuiz: string) {
-  //     // const response = await fetch(
-  //     //   'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
-  //     // );
-  //     //const data = await response.json();
-  //     console.log(
-  //       await fetch(
-  //         'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
-  //       ),
-  //     );
-  //     //return await this.quizRepository.save(data);
-  //   }
-
   async update(id: number, payload: UpdateQuestionDto) {
     let question = await this.findOne(id);
     question = {

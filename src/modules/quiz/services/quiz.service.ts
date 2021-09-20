@@ -6,6 +6,7 @@ import { CreateQuizDto, UpdateQuizDto } from '../dto/quiz.dto';
 import { Repository } from 'typeorm';
 import fetch from 'cross-fetch';
 import { QuestionsService } from 'src/modules/question/services/question.service';
+import { UsersService } from 'src/modules/user/services/user.service';
 
 @Injectable()
 export class QuizzesService {
@@ -36,8 +37,9 @@ export class QuizzesService {
   }
 
   async createQuiz(nameQuiz: string) {
-    // eslint-disable-next-line prettier/prettier
-    const response = await fetch('https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean');
+    const response = await fetch(
+      'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
+    );
     const data = await response.json();
     data.name = nameQuiz;
     const quiz = await this.quizRepository.save(data);
