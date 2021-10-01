@@ -7,12 +7,14 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import {
   CreateQuestionDto,
   UpdateQuestionDto,
 } from '../question/dto/question.dto';
 import { QuestionsService } from '../question/services/question.service';
 
+@ApiTags('Question')
 @Controller('question')
 export class QuestionController {
   constructor(private readonly questionsService: QuestionsService) {}

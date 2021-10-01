@@ -7,9 +7,10 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateQuizDto, UpdateQuizDto } from './dto/quiz.dto';
 import { QuizzesService } from './services/quiz.service';
-
+@ApiTags('quiz')
 @Controller('quiz')
 export class QuizController {
   constructor(private readonly quizzesService: QuizzesService) {}
